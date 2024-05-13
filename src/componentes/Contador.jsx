@@ -42,6 +42,11 @@ export default class Contador extends Component{
           accion={() => this.multiplicar()}
           />
       
+
+      <Boton simbolo='X'
+          accion={() => this.props.eliminar()}
+          />
+           
         </div>
       </div>
     )
