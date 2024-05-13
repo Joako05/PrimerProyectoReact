@@ -11,6 +11,9 @@ export default class App extends Component{
     this.state = {
       contadores: []
     }
+
+    this.eliminar = this.eliminar.bind(this);
+
   }
 
 
@@ -22,23 +25,28 @@ export default class App extends Component{
 
   }
 
+  eliminar(index) {
+    const nuevosContadores = [...this.state.contadores];
+    nuevosContadores.splice(index, 1);
+    this.setState({ contadores: nuevosContadores });
+}
 
 
-  render() {
-    return (
+render() {
+  return (
       <div className='contenedor'>
-          <Formulario 
-          guardar={(nombre) => this.guardar(nombre)}
-          />
-      <div className='ListaContadores'>
-        {this.state.contadores.map((cont, index) =>
-         <Contador 
-         key = {index}
-         eliminar={() => {}}
-         >{cont}</Contador>
-        )}
+          <Formulario guardar={(nombre) => this.guardar(nombre)} />
+          <div className='ListaContadores'>
+              {this.state.contadores.map((cont, index) =>
+                  <Contador 
+                      key={index}
+                      eliminar={() => this.eliminar(index)}
+                  >
+                      {cont}
+                  </Contador>
+              )}
+          </div>
       </div>
-      </div>
-    );
-  }
+  );
+}
 }
