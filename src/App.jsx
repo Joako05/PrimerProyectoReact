@@ -18,15 +18,16 @@ export default class App extends Component{
 
 
   guardar(nombre){
-
     let nuevosContadores = this.state.contadores;
     nuevosContadores.push(nombre);
     this.setState({contadores: nuevosContadores}); 
 
   }
 
+  
+
   eliminar(index) {
-    const nuevosContadores = [...this.state.contadores];
+    const nuevosContadores = [this.state.contadores];
     nuevosContadores.splice(index, 1);
     this.setState({ contadores: nuevosContadores });
 }
